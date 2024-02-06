@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Boats, Login, Register, Reservations} from "./pages";
-import {BoatDetails, BoatsList} from "./components";
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import {Boats, Login, Register, Reservations} from './pages';
+import {BoatDetails, BoatsList, NewBoatForm} from './components';
+import store from './redux/store'
 
 const router = createBrowserRouter([
     {
@@ -24,7 +26,7 @@ const router = createBrowserRouter([
         element: <Boats />,
         children: [
             {
-                path: '',
+                path: 'all',
                 element: <BoatsList />,
             },
             {
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: 'reservations',
                 element: <Reservations />
+            },
+            {
+                path: 'new-boat',
+                element: <NewBoatForm />
             }
         ]
     },
@@ -46,6 +52,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+      <Provider store={store}>
+          <RouterProvider router={router} />
+      </Provider>
   </React.StrictMode>
 );

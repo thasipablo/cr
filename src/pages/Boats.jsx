@@ -3,9 +3,11 @@ import {Outlet} from "react-router-dom";
 
 const Boats = () => {
     return (
-        <div>
+        <div className="flex h-screen">
             <Navigation />
-            <Outlet />
+            <div className="min-h-screen w-full overflow-y-scroll p-8">
+                <Outlet />
+            </div>
         </div>
     );
 }
