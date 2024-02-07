@@ -6,7 +6,7 @@ const BoatsList = () => {
     const boats = useSelector(state => state.boat)
 
   return (
-      <ul className="flex gap-6 flex-wrap justify-center">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {boats.map(boat => (
           <li key={boat.id}>
             <Link to={`/boats/${boat.id}`}>

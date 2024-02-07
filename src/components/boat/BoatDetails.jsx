@@ -1,23 +1,18 @@
-import {useParams} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {useEffect, useState} from "react";
-import {getSingleBoat} from "../../redux/slices/boatSlice";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BoatDetails = () => {
     const {id} = useParams();
-    // const dispatch = useDispatch()
-    //
-    // const [boat, setBoat] = useState({})
-    //
-    // useEffect(() => {
-    //     const boat = dispatch(getSingleBoat(id))
-    //     setBoat(boat)
-    // }, [boat]);
+    // get a single boat from the store by id
+    const boat = useSelector(state => state.boat.find(boat => boat.id === Number(id)));
+
+    console.log(boat);
 
     return (
         <div>
             <h1>Boat Details/{id}</h1>
-            {/*<p>{boat.name}</p>*/}
+            <img src={boat.image} alt="boat"/>
+            <p>{boat.name}</p>
         </div>
     );
 };
