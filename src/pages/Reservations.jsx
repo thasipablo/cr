@@ -1,7 +1,13 @@
+import {Navigation} from "../components";
+import {Outlet} from "react-router-dom";
+
 const Reservations = () => {
     return (
-        <div>
-            <h1>Reservations</h1>
+        <div className="flex h-screen">
+            <Navigation />
+            <div className="min-h-screen w-full overflow-y-scroll p-8">
+                <Outlet />
+            </div>
         </div>
     );
 }

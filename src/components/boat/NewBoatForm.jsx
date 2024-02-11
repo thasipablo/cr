@@ -1,8 +1,12 @@
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {addNewBoat} from "../../redux/slices/boatSlice";
 
 const NewBoatForm = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [formData, setFormData] = useState({
         name: "",
         image: "",
@@ -18,6 +22,7 @@ const NewBoatForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('New boat form data: ', formData);
+        dispatch(addNewBoat(formData));
         navigate("/boats/all");
     }
 

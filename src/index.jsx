@@ -5,8 +5,8 @@ import App from './App';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {Boats, Login, Register, Reservations} from './pages';
-import {BoatDetails, BoatsList, NewBoatForm} from './components';
-import store from './redux/store'
+import {BoatDetails, BoatsList, NewBoatForm, ReservationForm, ReservationsList} from './components';
+import store from './redux/store';
 
 const router = createBrowserRouter([
     {
@@ -34,12 +34,22 @@ const router = createBrowserRouter([
                 element: <BoatDetails />,
             },
             {
-                path: 'reservations',
-                element: <Reservations />
-            },
-            {
                 path: 'new-boat',
                 element: <NewBoatForm />
+            }
+        ],
+    },
+    {
+        path: 'reservations',
+        element: <Reservations />,
+        children: [
+            {
+                path: 'all',
+                element: <ReservationsList />
+            },
+            {
+                path: 'new',
+                element: <ReservationForm />
             }
         ]
     },
